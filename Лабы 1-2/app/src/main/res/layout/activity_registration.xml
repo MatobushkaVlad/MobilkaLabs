@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/RegistrationText"
+        android:text="@string/create_an_account"
+        style="@style/TitleText"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/ChooseEnter"
+        style="@style/LinearFieldEnterText"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RegistrationText">
+
+        <TextView
+            android:id="@+id/ByPhone"
+            android:text="@string/on_phone"
+            style="@style/ChooseFieldText"
+            android:textColor="@color/green"/>
+
+        <TextView
+            android:id="@+id/ByEmail"
+            android:text="@string/on_email"
+            style="@style/ChooseFieldText"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/EnterLayout"
+        style="@style/LinearFieldEnterText"
+        android:layout_marginTop="@dimen/base_margin"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ChooseEnter">
+
+        <EditText
+            android:id="@+id/EmailField"
+            style="@style/FieldEnterText"
+            android:hint="@string/enter_by_phone"
+            android:drawableStart="@drawable/user"/>
+
+        <EditText
+            android:id="@+id/PasswordField"
+            style="@style/FieldEnterText"
+            android:hint="@string/password"
+            android:drawableStart="@drawable/lock"/>
+
+        <EditText
+            android:id="@+id/ConfirmPasswordField"
+            style="@style/FieldEnterText"
+            android:hint="@string/confirm_password"
+            android:drawableStart="@drawable/lock"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/EnterButton"
+        android:text="@string/sign_up"
+        style="@style/EnterButton"
+
+        app:layout_constraintTop_toBottomOf="@+id/EnterLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
