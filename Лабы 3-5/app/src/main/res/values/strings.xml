@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">MobileAppChuprakov</string>
+    <string name="log_in">Log in</string>
+    <string name="remember_me">Remember me?</string>
+    <string name="password">\t\tPassword</string>
+    <string name="email_or_phone">\t\tEmail or Phone</string>
+    <string name="enter_by_email">\t\tEmail</string>
+    <string name="enter_by_phone">\t\tPhone</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="confirm_password">\t\tConfirm password</string>
+    <string name="on_phone">Phone</string>
+    <string name="on_email">Email</string>
+    <string name="create_an_account">Create an account</string>
+
+
+    <string name="error_email_enter">The email entered is incorrect</string>
+    <string name="error_phone_enter">The phone number entered is incorrect</string>
+    <string name="error_length_password_enter">Password must contain at least 8 characters</string>
+    <string name="error_confirm_password_enter">Passwords do not match</string>
+    <string name="error_incorrect_input_data">Incorrect login or password</string>
+
+    <string name="app_is_loading">App is loading</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="launch_price">Launch Price: </string>
+    <string name="launch_date">Launch Date: </string>
+    <string name="camera_score">Camera Score: </string>
+    <string name="default_product_name">1. Phone name</string>
+    <string name="default_price">\t$1299</string>
+    <string name="default_date">\tSep, 2022</string>
+    <string name="default_rating">\t149</string>
+</resources>
