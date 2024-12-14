@@ -2,6 +2,7 @@ package com.chuparkov.mobileappchuprakov
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -12,6 +13,11 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_USER_SIGN_UP
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_EMAIL_USER
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_PHONE_NUMBER_USER
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_PASSWORD_USER
 
 class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,5 +102,12 @@ class RegistrationActivity : AppCompatActivity() {
         return true
     }
 
+    fun AddStringSharedData(settings: SharedPreferences, typeData: String, data: String) {
+        return settings.edit().putString(typeData,data).apply()
+    }
+
+    fun AddBooleanSharedData(settings: SharedPreferences, typeData: String, data: Boolean) {
+        return settings.edit().putBoolean(typeData,data).apply()
+    }
 
 }

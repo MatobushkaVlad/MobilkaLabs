@@ -10,6 +10,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_USER_AUTO_LOG_IN
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_EMAIL_USER
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_PHONE_NUMBER_USER
+import com.chuparkov.mobileappchuprakov.WorkWithSharedPreferences.Companion.APP_PREFERENCES_PASSWORD_USER
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,27 +30,32 @@ class LoginActivity : AppCompatActivity() {
         val check_box = findViewById<CheckBox>(R.id.CheckBox)
 
         enter_button.setOnClickListener {
-            if (CorrectUserData(login_field.text.toString(), password_field.text.toString(),
-                    sharedPreferences)) {
-                AddBooleanSharedData(sharedPreferences, APP_PREFERENCES_USER_AUTO_LOG_IN, check_box.isChecked)
+            if ( CorrectUserData(login_field.text.toString(), password_field.text.toString(),sharedPreferences) ) {
+                AddBooleanSharedData( sharedPreferences, APP_PREFERENCES_USER_AUTO_LOG_IN, check_box.isChecked)
                 startActivity(Intent(this, ContentActivity::class.java))
-            }
-            else {
+            } else {
                 ShowShortToast("Incorrect login or password")
             }
         }
-
     }
     fun ShowShortToast(error: String) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
     }
+
+    fun CorrectUserData(login: String, password: String, settings: SharedPreferences): Boolean {
+        val sysEmailUser = getStringSharedData(settings, APP_PREFERENCES_EMAIL_USER)
+        val sysPhoneNumberUser = getStringSharedData(settings, APP_PREFERENCES_PHONE_NUMBER_USER)
+        val sysPasswordUser = getStringSharedData(settings, APP_PREFERENCES_PASSWORD_USER)
+
+        return ((sysEmailUser == login) || (sysPhoneNumberUser == login)) && (sysPasswordUser == password)
+    }
+
+    fun getStringSharedData(settings: SharedPreferences, data: String): String? {
+        return settings.getString(data,"")
+    }
+
+    fun AddBooleanSharedData(settings: SharedPreferences, typeData: String, data: Boolean) {
+        return settings.edit().putBoolean(typeData,data).apply()
+    }
 }
 
-fun CorrectUserData(login: String, password: String, settings: SharedPreferences): Boolean {
-    val sysEmailUser = getStringSharedData(settings, APP_PREFERENCES_EMAIL_USER)
-    val sysPhoneNumberUser = getStringSharedData(settings, APP_PREFERENCES_PHONE_NUMBER_USER)
-    val sysPasswordUser = getStringSharedData(settings, APP_PREFERENCES_PASSWORD_USER)
-
-    return ((sysEmailUser == login) || (sysPhoneNumberUser == login)) && (sysPasswordUser == password)
-
-}
